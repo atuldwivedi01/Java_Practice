@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class numberSystem{
     public static void main(String [] args){
         // System.out.println("checking");
@@ -12,6 +14,8 @@ public class numberSystem{
         System.out.println("Print Prime Factors : ");
         // primeFactor(24);
         primeFactorE(27);
+        sieveOfEratoshenses(100);
+        System.out.println("Computing Power : "+computePower(2,4));
     }
     public static int countDigit(long n){
         int res;
@@ -111,5 +115,41 @@ public class numberSystem{
         if(n>1){
             System.out.println(n);
         }
+    }
+    public static void sieveOfEratoshenses(int n){
+        if (n<=1){
+            System.out.println("No Prime number less than "+ n);
+            return;
+        }
+        else {
+            boolean [] a=new boolean[n+1];
+            
+            Arrays.fill(a, true);
+            for (int i=2;i*i<=n;i++){
+                if( a[i]){
+                    for (int j=i*i;j<=n;j=j+i){
+                        a[j]=false;
+                    }
+                }
+            }
+            System.out.println("Prime number less than "+n);
+            for (int i=2;i<=n;i++){
+                if (a[i]){
+                    System.out.println(i);
+                }
+            }
+        }
+    }
+    public static long computePower(long x, long n){
+        if (n==0){
+            return 1;
+        }
+        long temp=computePower(x, n/2);
+        temp=temp*temp;
+        if(n%2==0)
+            return temp;
+        else 
+            return temp*x;
+
     }
 }
