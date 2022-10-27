@@ -19,9 +19,10 @@ public class arrays {
         int [] arr3=new int [] {1,5,3,8,13};
         System.out.println("Max Profit: "+maxProfit(new int []{30,10}));
         System.out.println("Trapping Rain Water: "+trappingRainWater(new int[]{3,0,1,2,5}));
+        System.out.println("Consecutive 1's in the given array: "+maxConsecutiveOne(new int [] {0,0,1,1,1,1,1,0,1}));
+        System.out.println("Maximum subArray Sum of the given array : "+subArraySum(new int [] {-5,1,-2,3,-1,2,-2}));
         
     }
-
     // Return True if the array is sorted in Ascending Order.
     public static boolean isSortedAsc(int [] arr){
         boolean res=true;
@@ -32,7 +33,7 @@ public class arrays {
             }
         return res;
     }
-    //Reverse a given Array.
+    // Reverse a given Array.
     public static int [] reverseArray(int [] arr){
         int low=0;
         int high=arr.length-1;
@@ -99,7 +100,6 @@ public class arrays {
         }
         return res;
     }
-
     // Frequency of element in Sorted Array.
     public static void printFrequencyArray(int []arr){
         int freq=1;
@@ -148,7 +148,33 @@ public class arrays {
         }
         return res;
     }
-
-
-
+    // Maximum consecutive 1's in a Binary Array
+    public static int maxConsecutiveOne(int [] arr){
+        int res=0;
+        int i=0;
+        int curr=0;
+        while (i<arr.length){
+            if (arr[i]==0){
+                curr=0;
+            }else {
+                curr++;
+                res=Math.max(curr,res);
+            }
+            i++;
+        }
+        return res;
+    }
+    // Maximum SubArray Sum
+    public static int subArraySum(int [] arr){
+        int res=0;
+        int maxEnding=arr[0];
+        for (int i=1;i<arr.length;i++){
+            maxEnding=Math.max(maxEnding+arr[i],arr[i]);
+            res=Math.max(res,maxEnding);
+        }
+        return res;
+    }
+    // Maximum Length Even - Odd SubArray
+    
+    // Maximum Circular SubArray Sum
 }
