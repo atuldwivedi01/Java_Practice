@@ -21,6 +21,8 @@ public class arrays {
         System.out.println("Trapping Rain Water: "+trappingRainWater(new int[]{3,0,1,2,5}));
         System.out.println("Consecutive 1's in the given array: "+maxConsecutiveOne(new int [] {0,0,1,1,1,1,1,0,1}));
         System.out.println("Maximum subArray Sum of the given array : "+subArraySum(new int [] {-5,1,-2,3,-1,2,-2}));
+        System.out.println("Maximum Length even-odd array: "+maxLengthEvenOddSubArray(new int [] {1,2,4,4,5,6}));
+        
         
     }
     // Return True if the array is sorted in Ascending Order.
@@ -175,6 +177,18 @@ public class arrays {
         return res;
     }
     // Maximum Length Even - Odd SubArray
-    
+    public static int maxLengthEvenOddSubArray(int [] arr){
+        int res=1;
+        int curr=1;
+        for (int i=1;i<arr.length;i++){
+            if (arr[i]%2==0 && arr[i-1]%2!=0 || arr[i]%2!=0 && arr[i-1]%2==0){
+                curr+=1;
+                res=Math.max(curr,res);
+            }else{
+                curr=1;
+            }
+        }
+        return res;
+    }
     // Maximum Circular SubArray Sum
 }
